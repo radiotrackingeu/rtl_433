@@ -475,11 +475,11 @@ void histogram_fuse_bins(histogram_t *hist, float tolerance) {
 /// Print a histogram
 void histogram_print(const histogram_t *hist, uint32_t samp_rate) {
 	for(unsigned n = 0; n < hist->bins_count; ++n) {
-		fprintf(stderr, "%2u;%4u;%5u;%2u;%2u;%4.0f;", n,
+		fprintf(stderr, "%2u;%4u;%4.0f;", n,
 			hist->bins[n].count,
-			hist->bins[n].mean, 
-			hist->bins[n].min, 
-			hist->bins[n].max, 
+			//hist->bins[n].mean, 
+			//hist->bins[n].min, 
+			//hist->bins[n].max, 
 			1E6f * hist->bins[n].mean / samp_rate);
 	}
 }
@@ -525,7 +525,7 @@ void pulse_analyzer(pulse_data_t *data, uint32_t samp_rate)
 	histogram_print(&hist_periods, samp_rate);
 	fprintf(stderr, "%6i;%6i;",
 		data->ook_high_estimate, data->ook_low_estimate);
-	fprintf(stderr, "%+.1f;%+.1f;\n",
+	fprintf(stderr, "%+.1f;%+.1f;",
 		(float)data->fsk_f1_est/INT16_MAX*samp_rate/2.0/1000.0,
 		(float)data->fsk_f2_est/INT16_MAX*samp_rate/2.0/1000.0);
 

@@ -1266,6 +1266,7 @@ int main(int argc, char **argv) {
             r = rtlsdr_set_center_freq(dev, frequency[frequency_current]);
             if (r < 0)
                 fprintf(stderr, "WARNING: Failed to set center freq.\n");
+			fprintf(stderr, "Date;Time;Number;Counts;Duration;HighLevel;LowLevel;RelFreq1;RelFreq2\n");
             else
                 fprintf(stderr, "Tuned to %u Hz.\n", rtlsdr_get_center_freq(dev));
             r = rtlsdr_read_async(dev, rtlsdr_callback, (void *) demod,

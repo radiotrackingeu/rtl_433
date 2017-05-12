@@ -475,7 +475,7 @@ void histogram_fuse_bins(histogram_t *hist, float tolerance) {
 /// Print a histogram
 void histogram_print(const histogram_t *hist, uint32_t samp_rate) {
 	for(unsigned n = 0; n < hist->bins_count; ++n) {
-		fprintf(stderr, " [%2u] count: %4u,  width: %5u [%2u;%2u]\t(%4.0f us)\n", n,
+		fprintf(stderr, " [%2u];%4u;%5u;%2u;%2u;%4.0f;", n,
 			hist->bins[n].count,
 			hist->bins[n].mean, 
 			hist->bins[n].min, 
@@ -514,9 +514,9 @@ void pulse_analyzer(pulse_data_t *data, uint32_t samp_rate)
 	histogram_fuse_bins(&hist_gaps, TOLERANCE);
 	histogram_fuse_bins(&hist_periods, TOLERANCE);
 
-	fprintf(stderr, "Test Analyzing pulses...\n");
-	fprintf(stderr, "Test2 Total count: %4u,  width: %5i\t\t(%4.1f ms)\n",
-		data->num_pulses, pulse_total_period, 1000.0f*pulse_total_period/samp_rate);
+	//fprintf(stderr, "Test Analyzing pulses...\n");
+	//fprintf(stderr, "Test2 Total count: %4u,  width: %5i\t\t(%4.1f ms)\n",
+	//	data->num_pulses, pulse_total_period, 1000.0f*pulse_total_period/samp_rate);
 	fprintf(stderr, "Pulse width distribution:\n");
 	histogram_print(&hist_pulses, samp_rate);
 	fprintf(stderr, "Gap width distribution:\n");

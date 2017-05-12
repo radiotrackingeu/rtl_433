@@ -123,7 +123,7 @@ char* local_time_str(time_t time_secs, char *buf) {
 
 	tm_info = localtime(&etime);
 
-	strftime(buf, LOCAL_TIME_BUFLEN, "%Y-%m-%d %H:%M:%S", tm_info);
+	strftime(buf, LOCAL_TIME_BUFLEN, "%Y-%m-%d;%H:%M:%S;", tm_info);
 	return buf;
 }
 

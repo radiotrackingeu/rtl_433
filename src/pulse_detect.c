@@ -523,7 +523,7 @@ void pulse_analyzer(pulse_data_t *data, uint32_t samp_rate)
 	histogram_print(&hist_gaps, samp_rate);
 	//fprintf(stderr, "Pulse period distribution:\n");
 	histogram_print(&hist_periods, samp_rate);
-	fprintf(stderr, "%6i, %6i",
+	fprintf(stderr, "%6i;%6i;",
 		data->ook_high_estimate, data->ook_low_estimate);
 	fprintf(stderr, "%+.1f;%+.1f;\n",
 		(float)data->fsk_f1_est/INT16_MAX*samp_rate/2.0/1000.0,

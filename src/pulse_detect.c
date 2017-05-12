@@ -475,7 +475,7 @@ void histogram_fuse_bins(histogram_t *hist, float tolerance) {
 /// Print a histogram
 void histogram_print(const histogram_t *hist, uint32_t samp_rate) {
 	for(unsigned n = 0; n < hist->bins_count; ++n) {
-		fprintf(stderr, " [%2u];%4u;%5u;%2u;%2u;%4.0f;", n,
+		fprintf(stderr, "%2u;%4u;%5u;%2u;%2u;%4.0f;", n,
 			hist->bins[n].count,
 			hist->bins[n].mean, 
 			hist->bins[n].min, 
@@ -517,27 +517,26 @@ void pulse_analyzer(pulse_data_t *data, uint32_t samp_rate)
 	//fprintf(stderr, "Test Analyzing pulses...\n");
 	//fprintf(stderr, "Test2 Total count: %4u,  width: %5i\t\t(%4.1f ms)\n",
 	//	data->num_pulses, pulse_total_period, 1000.0f*pulse_total_period/samp_rate);
-	fprintf(stderr, "Pulse width distribution:\n");
+	//fprintf(stderr, "Pulse width distribution:\n");
 	histogram_print(&hist_pulses, samp_rate);
-	fprintf(stderr, "Gap width distribution:\n");
+	//fprintf(stderr, "Gap width distribution:\n");
 	histogram_print(&hist_gaps, samp_rate);
-	fprintf(stderr, "Pulse period distribution:\n");
+	//fprintf(stderr, "Pulse period distribution:\n");
 	histogram_print(&hist_periods, samp_rate);
-	fprintf(stderr, "Level estimates [high, low]: %6i, %6i\n",
+	fprintf(stderr, "%6i, %6i",
 		data->ook_high_estimate, data->ook_low_estimate);
-	fprintf(stderr, "Frequency offsets [F1, F2]:  %6i, %6i\t(%+.1f kHz, %+.1f kHz)\n",
-		data->fsk_f1_est, data->fsk_f2_est,
+	fprintf(stderr, "%+.1f;%+.1f;\n",
 		(float)data->fsk_f1_est/INT16_MAX*samp_rate/2.0/1000.0,
 		(float)data->fsk_f2_est/INT16_MAX*samp_rate/2.0/1000.0);
 
-	fprintf(stderr, "Guessing modulation: ");
+	//fprintf(stderr, "Guessing modulation: ");
 	struct protocol_state device = { .name = "Analyzer Device", 0};
 	histogram_sort_mean(&hist_pulses);	// Easier to work with sorted data
 	histogram_sort_mean(&hist_gaps);
 	if(hist_pulses.bins[0].mean == 0) { histogram_delete_bin(&hist_pulses, 0); }	// Remove FSK initial zero-bin
 
 	// Attempt to find a matching modulation
-	if(data->num_pulses == 1) {
+	/*if(data->num_pulses == 1) {
 		fprintf(stderr, "Single pulse detected. Probably Frequency Shift Keying or just noise...\n");
 	} else if(hist_pulses.bins_count == 1 && hist_gaps.bins_count == 1) {
 		fprintf(stderr, "Un-modulated signal. Maybe a preamble...\n");
@@ -619,7 +618,7 @@ void pulse_analyzer(pulse_data_t *data, uint32_t samp_rate)
 			default:
 				fprintf(stderr, "Unsupported\n");
 		}
-	}
+	}*/
 
 	fprintf(stderr, "\n");
 }

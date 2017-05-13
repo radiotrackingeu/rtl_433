@@ -474,14 +474,14 @@ void histogram_fuse_bins(histogram_t *hist, float tolerance) {
 
 /// Print a histogram
 void histogram_print(const histogram_t *hist, uint32_t samp_rate) {
-	for(unsigned n = 0; n < hist->bins_count; ++n) {
+	//for(unsigned n = 0; n < hist->bins_count; ++n) {
 		fprintf(stderr, "%2u;%4u;%4.0f;", n,
 			hist->bins[n].count,
 			//hist->bins[n].mean, 
 			//hist->bins[n].min, 
 			//hist->bins[n].max, 
 			1E6f * hist->bins[n].mean / samp_rate);
-	}
+	//}
 }
 
 

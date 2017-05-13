@@ -520,9 +520,9 @@ void pulse_analyzer(pulse_data_t *data, uint32_t samp_rate)
 	//fprintf(stderr, "Pulse width distribution:\n");
 	histogram_print(&hist_pulses, samp_rate);
 	//fprintf(stderr, "Gap width distribution:\n");
-	histogram_print(&hist_gaps, samp_rate);
+	//histogram_print(&hist_gaps, samp_rate);
 	//fprintf(stderr, "Pulse period distribution:\n");
-	histogram_print(&hist_periods, samp_rate);
+	//histogram_print(&hist_periods, samp_rate);
 	fprintf(stderr, "%6i;%6i;",
 		data->ook_high_estimate, data->ook_low_estimate);
 	fprintf(stderr, "%+.1f;%+.1f;",

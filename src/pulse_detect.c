@@ -293,7 +293,7 @@ int pulse_detect_package(const int16_t *envelope_data, const int16_t *fm_data, i
 						fsk_pulses->ook_low_estimate = s->ook_low_estimate;
 						fsk_pulses->ook_high_estimate = s->ook_high_estimate;
 						s->ook_state = PD_OOK_STATE_IDLE;	// Ensure everything is reset
-						return 1;	// FSK package detected!!!
+						return 2;	// FSK package detected!!!
 					}
 				} // if
 				// FSK Demodulation (continue during short gap - we might return...)

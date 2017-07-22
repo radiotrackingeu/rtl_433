@@ -32,8 +32,8 @@ void pulse_data_print(const pulse_data_t *data) {
 
 
 // OOK adaptive level estimator constants
-#define OOK_HIGH_LOW_RATIO	10000		// Default ratio between high and low (noise) level
-#define OOK_MIN_HIGH_LEVEL	1			// Minimum estimate of high level
+#define OOK_HIGH_LOW_RATIO	2			// Default ratio between high and low (noise) level
+#define OOK_MIN_HIGH_LEVEL	2			// Minimum estimate of high level
 #define OOK_MAX_HIGH_LEVEL	(128*128)	// Maximum estimate for high level (A unit phasor is 128, anything above is overdrive)
 #define OOK_MAX_LOW_LEVEL	(OOK_MAX_HIGH_LEVEL/2)	// Maximum estimate for low level
 #define OOK_EST_HIGH_RATIO	64			// Constant for slowness of OOK high level estimator

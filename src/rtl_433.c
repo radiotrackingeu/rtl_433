@@ -686,7 +686,7 @@ static void rtlsdr_callback(unsigned char *iq_buf, uint32_t len, void *ctx) {
 				if(demod->analyze_pulses && (include_only == 0 || (include_only == 1 && p_events == 0) || (include_only == 2 && p_events > 0)) ) { 
 					pulse_analyzer(&demod->pulse_data, samp_rate);
 				}
-			} else if (package_type == 7) {
+			} else if (package_type == 2) {
 				if(demod->analyze_pulses) fprintf(stderr, "Detected FSK package\t@ %s\n", local_time_str(0, time_str));
 				for (i = 0; i < demod->r_dev_num; i++) {
 					switch (demod->r_devs[i]->modulation) {

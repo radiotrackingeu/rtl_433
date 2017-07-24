@@ -516,7 +516,7 @@ void pulse_analyzer(pulse_data_t *data, uint32_t samp_rate)
 	histogram_fuse_bins(&hist_gaps, TOLERANCE);
 	histogram_fuse_bins(&hist_periods, TOLERANCE);
 
-	fprintf(stderr, "%5f ", 1000000.0f*pulse_total_period/samp_rate);
+	fprintf(stderr, "%1f ", 1000000.0f*pulse_total_period/samp_rate);
 	//fprintf(stderr, "Pulse width distribution:\n");
 	//histogram_print(&hist_pulses, samp_rate);
 	//fprintf(stderr, "Gap width distribution:\n");

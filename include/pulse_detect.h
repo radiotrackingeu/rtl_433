@@ -14,12 +14,12 @@
 #include <stdint.h>
 
 #define PD_MAX_PULSES 1200			// Maximum number of pulses before forcing End Of Package
-#define PD_MIN_PULSES 16			// Minimum number of pulses before declaring a proper package
+#define PD_MIN_PULSES 16			// Minimum number of pulses before declaring a proper package 16
 #define PD_MIN_PULSE_SAMPLES 10		// Minimum number of samples in a pulse for proper detection
 #define PD_MIN_GAP_MS 10			// Minimum gap size in milliseconds to exceed to declare End Of Package
 #define PD_MAX_GAP_MS 100			// Maximum gap size in milliseconds to exceed to declare End Of Package
 #define PD_MAX_GAP_RATIO 10			// Ratio gap/pulse width to exceed to declare End Of Package (heuristic)
-#define PD_MAX_PULSE_MS 100			// Pulse width in ms to exceed to declare End Of Package (e.g. for non OOK packages)
+#define PD_MAX_PULSE_MS 10 			// Pulse width in ms to exceed to declare End Of Package (e.g. for non OOK packages)
 
 /// Data for a compact representation of generic pulse train
 typedef struct {

@@ -270,9 +270,9 @@ int pulse_detect_package(const int16_t *envelope_data, const int16_t *fm_data, i
 					pulses->fsk_f1_est += fm_data[s->data_counter] / OOK_EST_HIGH_RATIO - pulses->fsk_f1_est / OOK_EST_HIGH_RATIO;
 				}
 				// FSK Demodulation
-				if(pulses->num_pulses == 0) {	// Only during first pulse
+				/*if(pulses->num_pulses == 0) {	// Only during first pulse
 					pulse_FSK_detect(fm_data[s->data_counter], fsk_pulses, &s->FSK_state);
-				}
+				}*/
 				break;
 			case PD_OOK_STATE_GAP_START:	// Beginning of gap - it might be a spurious gap
 				s->pulse_length++;
@@ -297,9 +297,9 @@ int pulse_detect_package(const int16_t *envelope_data, const int16_t *fm_data, i
 					}*/
 				} // if
 				// FSK Demodulation (continue during short gap - we might return...)
-				if(pulses->num_pulses == 0) {	// Only during first pulse
+				/*if(pulses->num_pulses == 0) {	// Only during first pulse
 					pulse_FSK_detect(fm_data[s->data_counter], fsk_pulses, &s->FSK_state);
-				}
+				}*/
 				break;
 			case PD_OOK_STATE_GAP:
 				s->pulse_length++;

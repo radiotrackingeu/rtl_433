@@ -43,7 +43,7 @@ void pulse_data_print(const pulse_data_t *data) {
 #define FSK_DEFAULT_FM_DELTA	6000	// Default estimate for frequency delta
 #define FSK_EST_RATIO		32			// Constant for slowness of FSK estimators
 
-/*
+
 /// Internal state data for pulse_FSK_detect()
 typedef struct {
 	unsigned int fsk_pulse_length;		// Counter for internal FSK pulse detection
@@ -182,7 +182,7 @@ void pulse_FSK_wrap_up(pulse_data_t *fsk_pulses, pulse_FSK_state_t *s) {
 		fsk_pulses->num_pulses++;
 	}
 }
-*/
+
 
 /// Internal state data for pulse_pulse_package()
 typedef struct {

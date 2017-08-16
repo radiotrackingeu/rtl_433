@@ -138,8 +138,8 @@ void baseband_demod_FM(const uint8_t *x_buf, int16_t *y_buf, unsigned num_sample
 		// Calculate phase difference vector: x[n] * conj(x[n-1])
 		pr = ar*br+ai*bi;	// May exactly overflow an int16_t (-128*-128 + -128*-128)
 		pi = ai*br-ar*bi; 
-//		xlp = (int16_t)((atan2f(pi, pr) / M_PI) * INT16_MAX);	// Floating point implementation
-		xlp = atan2_int16(pi, pr);	// Integer implementation
+		xlp = (int16_t)((atan2f(pi, pr) / M_PI) * INT16_MAX);	// Floating point implementation
+//		xlp = atan2_int16(pi, pr);	// Integer implementation
 //		xlp = pi;					// Cheat and use only imaginary part (works OK, but is amplitude sensitive)
 		// Low pass filter
 		ylp = ((alp[1] * ylp_old >> 1) + (blp[0] * xlp >> 1) + (blp[1] * xlp_old >> 1)) >> (F_SCALE - 1);

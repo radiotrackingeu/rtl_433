@@ -225,7 +225,7 @@ int pulse_detect_package(const int16_t *envelope_data, const int16_t *fm_data, i
 		switch (s->ook_state) {
 			case PD_OOK_STATE_IDLE:
 				if (am_n > (ook_threshold)// + ook_hysteresis)	// Above threshold?
-				 && s->lead_in_counter > OOK_EST_LOW_RATIO	// Lead in counter to stabilize noise estimate
+				 //&& s->lead_in_counter > OOK_EST_LOW_RATIO	// Lead in counter to stabilize noise estimate
 				 ) {
 					// Initialize all data
 					pulse_data_clear(pulses);
@@ -243,7 +243,7 @@ int pulse_detect_package(const int16_t *envelope_data, const int16_t *fm_data, i
 					s->ook_high_estimate = OOK_HIGH_LOW_RATIO * s->ook_low_estimate;	// Default is a ratio of low level
 					s->ook_high_estimate = max(s->ook_high_estimate, OOK_MIN_HIGH_LEVEL);
 					s->ook_high_estimate = min(s->ook_high_estimate, OOK_MAX_HIGH_LEVEL);
-					if (s->lead_in_counter <= OOK_EST_LOW_RATIO) s->lead_in_counter++;		// Allow inital estimate to settle
+					//if (s->lead_in_counter <= OOK_EST_LOW_RATIO) s->lead_in_counter++;		// Allow inital estimate to settle
 				}
 				break;
 			case PD_OOK_STATE_PULSE:

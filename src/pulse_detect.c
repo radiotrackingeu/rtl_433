@@ -219,12 +219,12 @@ int pulse_detect_package(const int16_t *envelope_data, const int16_t *fm_data, i
 		const int16_t am_n = envelope_data[s->data_counter];
 		int16_t ook_threshold = s->ook_low_estimate + (s->ook_high_estimate - s->ook_low_estimate) / 2;
 		if (level_limit != 0) ook_threshold = level_limit;	// Manual override
-		const int16_t ook_hysteresis = 0 //ook_threshold / 8;	// ±12%
+		const int16_t ook_hysteresis = ook_threshold / 8;	// ±12%
 
 		// OOK State machine
 		switch (s->ook_state) {
 			case PD_OOK_STATE_IDLE:
-				if (am_n > (ook_threshold + ook_hysteresis)	// Above threshold?
+				if (am_n > (ook_threshold)// + ook_hysteresis)	// Above threshold?
 				 && s->lead_in_counter > OOK_EST_LOW_RATIO	// Lead in counter to stabilize noise estimate
 				 ) {
 					// Initialize all data

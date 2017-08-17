@@ -619,7 +619,7 @@ static void rtlsdr_callback(unsigned char *iq_buf, uint32_t len, void *ctx) {
 
 	// AM demodulation
 	envelope_detect(iq_buf, demod->temp_buf, len/2);
-	//baseband_low_pass_filter(demod->temp_buf, demod->am_buf, len/2, &demod->lowpass_filter_state);
+	baseband_low_pass_filter(demod->temp_buf, demod->am_buf, len/2, &demod->lowpass_filter_state);
 
 	// FM demodulation
 	if (demod->enable_FM_demod) {
